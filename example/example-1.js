@@ -1,4 +1,4 @@
-import { DevApi } from ".";
+import { DevApi } from "../src";
 
 const config = {
   resources: ["users", "dishes"],
