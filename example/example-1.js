@@ -1,7 +1,7 @@
-import { DevApi } from "../src";
+const DevApi = require("@justinkprince/dev-api");
 
 const config = {
-  resources: ["users", "dishes"],
+  resources: ["users", "groups", "books"],
   filepath: "./data/app.json",
   port: 3003,
 };
