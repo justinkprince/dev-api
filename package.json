@@ -1,0 +1,31 @@
+{
+  "name": "@justinkprince/dev-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npx babel src --watch --out-dir dist",
+    "build": "npx babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinkprince/dev-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinkprince/dev-api/issues"
+  },
+  "homepage": "https://github.com/justinkprince/dev-api#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "lokijs": "^1.5.12",
+    "uuid": "^8.3.2"
+  }
+}
