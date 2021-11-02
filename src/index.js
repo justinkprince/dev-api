@@ -3,6 +3,7 @@ import cors from "cors";
 import loki from "lokijs";
 import path from "path";
 import fs from "fs";
+import { v4 as uuidv4 } from "uuid";
 
 export class DevApi {
   constructor({ resources, filepath }) {
@@ -12,7 +13,11 @@ export class DevApi {
     this.db = new loki(path.resolve(filepath), { persistenceMethod: "fs" });
     this.app = express();
     this.app.use(express.json());
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        origin: "*",
+      })
+    );
     this.collections = {};
 
     this.initializeDatabase();
@@ -69,7 +74,7 @@ export class DevApi {
       this.app.post(`/${resource}`, (req, res) => {
         const requestData = req.body;
         if (!requestData.id) {
-          requestData.id = uuid();
+          requestData.id = uuidv4();
         }
 
         const collection = this.collections[resource];
