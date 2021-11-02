@@ -62,12 +62,18 @@ export class DevApi {
     this.resources.forEach((resource) => {
       this.app.get(`/${resource}`, (req, res) => {
         const collection = this.db.getCollection(resource).data;
+        res.set({
+          "Access-Control-Allow-Origin": "*",
+        });
         res.json({ data: collection });
       });
 
       this.app.get(`/${resource}/:resourceId`, (req, res) => {
         const collection = this.collections[resource];
         const item = collection.by("id", req.params.resourceId);
+        res.set({
+          "Access-Control-Allow-Origin": "*",
+        });
         res.json({ data: item });
       });
 
@@ -80,7 +86,9 @@ export class DevApi {
         const collection = this.collections[resource];
         collection.insert(requestData);
         this.db.saveDatabase();
-
+        res.set({
+          "Access-Control-Allow-Origin": "*",
+        });
         res.json(requestData);
       });
 
@@ -93,7 +101,9 @@ export class DevApi {
         };
         collection.update(item);
         this.db.saveDatabase();
-
+        res.set({
+          "Access-Control-Allow-Origin": "*",
+        });
         res.json(item);
       });
 
@@ -101,7 +111,9 @@ export class DevApi {
         const id = req.params.resourceId;
         this.collections[resource].findAndRemove({ id: { $aeq: id } });
         this.db.saveDatabase();
-
+        res.set({
+          "Access-Control-Allow-Origin": "*",
+        });
         res.json({ data: id });
       });
     });
