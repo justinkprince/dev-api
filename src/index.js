@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import loki from "lokijs";
 import path from "path";
 import fs from "fs";
@@ -11,6 +12,7 @@ export class DevApi {
     this.db = new loki(path.resolve(filepath), { persistenceMethod: "fs" });
     this.app = express();
     this.app.use(express.json());
+    this.app.use(cors());
     this.collections = {};
 
     this.initializeDatabase();
